@@ -1,0 +1,22 @@
+﻿@model DrawModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form asp-method ="post" asp-action="Draw">
+    <p>Press this to draw cards</p>
+    <input type ="hidden" name="id" value="@Model.deck_id"/>
+
+    <input type ="submit" class="btn btn-primary"/>
+</form>
+
+@{
+    <h1>Here are your cards:</h1>
+
+    <p>Deck Id: @Model.deck_id</p>
+    foreach (DrawModel.Card c in Model.cards)
+    {
+        <div><img src="@c.image" style="width: 10%; height: 10%" display: inline-block; /><br>@c.value of @c.suit</div>
+    }
+}
